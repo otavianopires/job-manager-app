@@ -1,0 +1,15 @@
+.page {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 15px;
+}
