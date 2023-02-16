@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { JobProvider } from "../contexts/JobContext";
 import { useUser } from "../contexts/UserContext";
 import ActiveJob from "./ActiveJob";
 import styles from "./Dashboard.module.css"
 import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
 
 const Dashboard = () => {
   const  { token } = useUser();
@@ -13,16 +14,18 @@ const Dashboard = () => {
   }
 
   return (
-    <div className={styles.page}>
-      <Header />
-      <div className={styles.container}>
-        <Sidebar />
-        <main className={styles.main}>
-          <Outlet />
-        </main>
+    <JobProvider>
+      <div className={styles.page}>
+        <Header />
+        <div className={styles.container}>
+          <Navbar />
+          <main className={styles.main}>
+            <Outlet />
+          </main>
+        </div>
+        <ActiveJob />
       </div>
-      <ActiveJob />
-    </div>
+    </JobProvider>
   )
 }
 
