@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from "../lib/helpers";
 
-const Users = () => {
-  const [users, setUsers] = useState([]);
+const Clients = () => {
+  const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getUsers = () => {
     setLoading(true);
-    fetchData(`${process.env.REACT_APP_API_URL}/users`)
-      .then((users) => {
+    fetchData(`${process.env.REACT_APP_API_URL}/clients`)
+      .then((clients) => {
         setLoading(false);
-        setUsers(users);
+        setClients(clients.data);
       })
       .catch(() => {
         setLoading(false);
@@ -23,14 +23,12 @@ const Users = () => {
 
   return (
     <div>
-      <h2>Users</h2>
+      <h2>Clients</h2>
       <table>
         <thead>
           <tr>
-            <th>id</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Create date</th>
+            <th>Address</th>
           </tr>
         </thead>
         {loading &&
@@ -41,12 +39,10 @@ const Users = () => {
         </tbody>
         }
         {!loading &&<tbody>
-          {users.map(user => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.createdAt}</td>
+          {clients.map(client => (
+            <tr key={client.id}>
+              <td>{client.attributes.name}</td>
+              <td>{client.attributes.address}</td>
             </tr>
           ))}
         </tbody>
@@ -56,4 +52,4 @@ const Users = () => {
   )
 }
 
-export default Users;
+export default Clients;

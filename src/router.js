@@ -2,7 +2,7 @@ import {createBrowserRouter, Navigate} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import PublicLayout from "./components/PublicLayout";
 import Admin from "./pages/Admin";
-import Users from "./pages/Users";
+import Clients from "./pages/Clients";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Jobs from "./pages/Jobs";
@@ -15,15 +15,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate to="/users" />
+        element: <Navigate to="/jobs" />
       },
       {
         path: '/admin',
         element: <Admin />
       },
       {
-        path: '/users',
-        element: <Users />
+        path: '/clients',
+        element: <Clients />
       },
       {
         path: '/jobs',
