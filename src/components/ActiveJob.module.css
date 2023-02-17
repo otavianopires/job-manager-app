@@ -1,0 +1,10 @@
+.activeJobContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #71ff52;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
