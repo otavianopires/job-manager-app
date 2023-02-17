@@ -80,7 +80,7 @@ const JobDetails = () => {
         <div className={styles.complete}><span class={styles.checkContainer}><span class={styles.check}></span></span> Completed</div>
         }
 
-        {/* {job.id && job.attributes.activeEndTime === null && ( activeJob === null || activeJob.id === job.id ) && <StopWatch className={styles.stopWatch} /> } */}
+        {job.id && job.attributes.activeEndTime === null && ( activeJob === null || activeJob.id === job.id ) && <StopWatch className={styles.stopWatch} /> }
         <div className={styles.schedule}>
           <table>
             <thead>

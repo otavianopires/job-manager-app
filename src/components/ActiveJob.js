@@ -14,7 +14,7 @@ const ActiveJob = () => {
     <div className={styles.activeJobContainer}>
       <h3>Active Job</h3>
       {activeJob !== null && activeJob.hasOwnProperty('id') && <StopWatch /> }
-      <Link to={`/jobs/${activeJob.id}`} className={styles.button}>View details</Link>
+      <Link to={`/jobs/${activeJob.id}`} className={styles.button}>View job details</Link>
     </div>
   )
 }

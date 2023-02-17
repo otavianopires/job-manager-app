@@ -48,6 +48,15 @@
   text-align: left;
 }
 
+.stopWatch button {
+  background-color: #266df1 !important;
+  color: white !important;
+}
+
+.stopWatch button:hover {
+  background-color: #4b87f5 !important;
+}
+
 .schedule {
   display: flex;
   gap: 10px;
