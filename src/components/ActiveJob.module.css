@@ -3,8 +3,27 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: #71ff52;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
+  background: #266df1;
+  color: #ffffff;
+  padding: 10px 15px;
+  text-align: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.button {
+  text-decoration: none;
+  border-radius: 9999px;
+  border: none;
+  background-color: white;
+  color: #266df1;
+  padding: 10px 22px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }

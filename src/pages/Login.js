@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../components/Button";
 import { useUser } from "../contexts/UserContext";
 import { fetchData } from "../lib/helpers";
 import styles from "./Login.module.css";
@@ -10,31 +11,27 @@ const Login = () => {
   });
   const [errors, setErrors] = useState(null);
 
-  const { setToken, setUser} = useUser();
+  const { setToken, setUser, login} = useUser();
 
   const handleInputChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    fetchData(`${process.env.REACT_APP_API_URL}/auth/local`, loginData, 'POST')
-      .then((response) => {
-        if (typeof response.jwt !== 'undefined' && response.user.blocked === false) {
-          console.log(response);
-          setToken(response.jwt);
-          setUser(response.user);
-        } else if (response.error !== null) {
-          console.log(response.error);
-          setErrors(response.error);
-        }
-      });
+    const response = await login(loginData);
+    if (typeof response.jwt !== 'undefined' && response.user.blocked === false) {
+      setToken(response.jwt);
+      setUser(response.user);
+    } else {
+      setErrors(response.error);
+    }
   }
 
   const alertError = () => {
     if ( errors !== null && errors.details.hasOwnProperty('errors') ) {
       return (
-        <ul>
+        <ul className={styles.alert}>
           {errors.details.errors.map( (error, index) => (
             <li key={index}>{error.message}</li>
           ))}
@@ -45,12 +42,12 @@ const Login = () => {
 
   return (
     <>
-      <h2>Login</h2>
-      {errors && <p>{errors.message}</p>}
+      <h3 className={styles.loginTitle}>Login</h3>
+      {errors && <p className={styles.alert}>{errors.message}</p>}
       {alertError()}
-      <form onSubmit={handleLogin} className="w-full max-w-lg">
-        <div className="flex flex-col">
-          <label htmlFor="identifier">Email</label>
+      <form onSubmit={handleLogin} className={styles.form}>
+        <div className={styles.formControl}>
+          <label htmlFor="identifier" className={styles.label}>Email</label>
           <input
             type="email"
             id="identifier"
@@ -60,8 +57,8 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="password">Password</label>
+        <div className={styles.formControl}>
+          <label htmlFor="password" className={styles.label}>Password</label>
           <input
             type="password"
             id="password"
@@ -71,7 +68,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <Button type="submit" className={styles.button}>Login</Button>
       </form>
     </>
   )

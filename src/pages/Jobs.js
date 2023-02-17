@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
-import {fetchData, generateQueryString} from '../lib/helpers';
+import {fetchData, formatDate, generateQueryString} from '../lib/helpers';
+import styles from "./Jobs.module.css";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getJobs = () => {
+  const getJobs = async () => {
     var params = {
       'fields[0]': 'title',
       'fields[1]': 'startTime',
@@ -14,57 +15,39 @@ const Jobs = () => {
       'populate[client][fields][0]': 'name',
     };
 
-    fetchData(`${process.env.REACT_APP_API_URL}/jobs?${generateQueryString(params)}`)
-      .then((jobs) => {
-        setLoading(false);
-        setJobs(jobs.data);
-      })
+    const response = await fetchData(`${process.env.REACT_APP_API_URL}/jobs?${generateQueryString(params)}`);
+    if (response.data !== null && response.data.length > 0) {
+      setJobs(response.data);
+    }
+    setLoading(false);
   }
 
   useEffect(() => {
     setLoading(true);
     getJobs();
-
-    return () => {
-      setLoading(false);
-    }
+    return () => {};
   }, []);
 
   return (
     <div>
       <h2>Jobs</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>Title</th>
-            <th>Start Date/Time</th>
-            <th>End Date/Time</th>
-            <th>Client</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        {loading &&
-        <tbody>
-          <tr>
-            <td colSpan="4">Loading...</td>
-          </tr>
-        </tbody>
-        }
-        {!loading && <tbody>
+
+        {loading && <p >Loading...</p>}
+
+        {!loading &&
+        <div className={styles.jobList}>
           {jobs.map(job => (
-            <tr key={job.id}>
-              <td>{job.id}</td>
-              <td>{job.attributes.title}</td>
-              <td>{job.attributes.startTime}</td>
-              <td>{job.attributes.endTime}</td>
-              <td>{job.attributes.client.data.attributes.name}</td>
-              <td><Link to={`/jobs/${job.id}`}>View details</Link></td>
-            </tr>
+            <div key={job.id} className={styles.jobItem}>
+              <h3>{job.attributes.title}</h3>
+              <ul className={styles.schedule}>
+                <li>Start: {formatDate(job.attributes.startTime, { weekday: "short", year: "numeric", month: "short", day: "numeric", timeZone: "EST" })}</li>
+                <li>End: {formatDate(job.attributes.endTime, { weekday: "short", year: "numeric", month: "short", day: "numeric", timeZone: "EST" })}</li>
+              </ul>
+              <Link to={`/jobs/${job.id}`} className={styles.button}>View details</Link>
+            </div>
           ))}
-        </tbody>
+        </div>
         }
-      </table>
     </div>
   )
 }

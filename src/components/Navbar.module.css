@@ -1,5 +1,5 @@
 .navbar {
-  background-color: crimson;
+  background-color: #042c76;
 }
 .menu {
   list-style: none;
@@ -16,6 +16,6 @@
   text-decoration: none;
 }
 .menuLink:hover {
-  background-color: rgb(174, 8, 42);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }

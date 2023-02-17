@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useJob } from "../contexts/JobContext";
+import styles from "./StopWatch.module.css";
 import Timer from "./Timer";
+import Button from "./Button";
 
-const StopWatch = () => {
+const StopWatch = (props) => {
   const { id } = useParams();
   const {
     activeJob,
@@ -37,13 +39,13 @@ const StopWatch = () => {
   };
 
   return (
-    <div className="stop-watch">
+    <div className={`${styles.stopWatch} ${props.className}`}>
       <Timer time={time} />
-      <div className="buttons">
-        {!isActive && <button onClick={handleStart}>Start</button>}
-        {isActive && !isPaused && <button onClick={handlePause}>Pause</button>}
-        {isActive && isPaused  && <button onClick={handleResume}>Resume</button>}
-        {isActive && <button onClick={handleStop}>Complete</button>}
+      <div className={styles.controllers}>
+        {!isActive && <Button onClick={handleStart} className={styles.button}>Start</Button>}
+        {isActive && !isPaused && <Button onClick={handlePause} className={styles.button}>Pause</Button>}
+        {isActive && isPaused  && <Button onClick={handleResume} className={styles.button}>Resume</Button>}
+        {isActive && <Button onClick={handleStop} className={styles.button}>Complete</Button>}
       </div>
     </div>
   );

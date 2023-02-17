@@ -2,7 +2,7 @@ import styles from "./Button.module.css";
 
 const Button = (props) => {
   return (
-    <button className={styles.button} onClick={props.onClick}>{props.children}</button>
+    <button className={`${styles.button} ${props.className}`} onClick={props.onClick} type={props.type}>{props.children}</button>
   )
 }
 

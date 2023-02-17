@@ -1,0 +1,67 @@
+.jobContainer {
+  background-color: white;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
+  box-sizing: border-box;
+}
+
+.overdue {
+  background-color: rgb(255, 224, 70);
+  color: #6d5b00;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 99999px;
+}
+
+.complete {
+  color: rgb(4 44 119);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 99999px;
+}
+
+.checkContainer {
+  background-color: rgb(65, 213, 7);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+.check {
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 12px;
+  width: 6px;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  margin-bottom: 3px;
+}
+
+.stopWatch {
+  text-align: left;
+}
+
+.schedule {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.schedule table {
+  text-align: left;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.schedule table th, .schedule table td {
+  vertical-align: top;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 10px;
+}

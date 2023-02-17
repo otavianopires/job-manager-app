@@ -1,15 +1,16 @@
 import { Navigate, Outlet } from "react-router-dom"
 import { useUser } from "../contexts/UserContext";
+import styles from "./PublicLayout.module.css";
 
 const PublicLayout = () => {
   const { token } = useUser();
   if (token) {
-    return <Navigate to="/admin" />
+    return <Navigate to="/jobs" />
   }
   return (
-    <div>
-      <div>
-        <h1>Public Users</h1>
+    <div className={styles.page}>
+      <h1>Job Manager</h1>
+      <div className={styles.container}>
         <Outlet />
       </div>
     </div>
