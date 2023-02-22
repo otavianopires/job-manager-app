@@ -3,10 +3,33 @@
   border: none;
   background-color: #266df1;
   color: white;
-  padding: 10px 16px;
+  padding: 8px 14px;
   cursor: pointer;
+  transition: background-color .1s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.rightIcon {
+  padding-right: 10px;
+}
+
+.leftIcon {
+  padding-left: 10px;
+}
+
+.rightIcon .icon {
+  padding-left: 4px;
+}
+
+.leftIcon .icon {
+  padding-right: 4px;
 }
 
 .button:hover {
+  color: white;
   background-color: #4b87f5;
 }

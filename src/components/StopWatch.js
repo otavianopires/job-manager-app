@@ -38,11 +38,11 @@ const StopWatch = (props) => {
   return (
     <div className={`${styles.stopWatch} ${props.className}`}>
       <Timer time={time} />
+      {!isActive && <Button onClick={handleStart} className={styles.button} leftIcon="play_circle">Start</Button>}
       <div className={styles.controllers}>
-        {!isActive && <Button onClick={handleStart} className={styles.button}>Start</Button>}
-        {isActive && !isPaused && <Button onClick={handlePause} className={styles.button}>Pause</Button>}
-        {isActive && isPaused  && <Button onClick={handleResume} className={styles.button}>Resume</Button>}
-        {isActive && <Button onClick={handleComplete} className={styles.button}>Complete</Button>}
+        {isActive && !isPaused && <Button onClick={handlePause} className={styles.button} leftIcon="pause_circle">Pause</Button>}
+        {isActive && isPaused  && <Button onClick={handleResume} className={styles.button} leftIcon="play_circle">Resume</Button>}
+        {isActive && <Button onClick={handleComplete} className={styles.button} leftIcon="check_box">Complete</Button>}
       </div>
     </div>
   );

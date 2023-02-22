@@ -1,5 +1,8 @@
 .page {
-  height: 100vh;
+}
+
+.activeJob {
+  padding-bottom: 82px;
 }
 
 .container {

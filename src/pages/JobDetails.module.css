@@ -12,36 +12,19 @@
   font-weight: bold;
   padding: 10px 16px;
   border-radius: 99999px;
+  margin-bottom: 20px;
 }
 
 .complete {
-  color: rgb(4 44 119);
+  color: var(--white);
+  background-color: var(--green);
   font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   padding: 10px;
-  background: #f1f1f1;
   border-radius: 99999px;
-}
-
-.checkContainer {
-  background-color: rgb(65, 213, 7);
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-}
-.check {
-  display: inline-block;
-  transform: rotate(45deg);
-  height: 12px;
-  width: 6px;
-  border-bottom: 3px solid white;
-  border-right: 3px solid white;
-  margin-bottom: 3px;
+  margin-bottom: 20px;
 }
 
 .stopWatch {
@@ -61,16 +44,4 @@
   display: flex;
   gap: 10px;
   margin: 20px 0;
-}
-
-.schedule table {
-  text-align: left;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.schedule table th, .schedule table td {
-  vertical-align: top;
-  border-bottom: 1px solid #e3e3e3;
-  padding: 10px;
 }

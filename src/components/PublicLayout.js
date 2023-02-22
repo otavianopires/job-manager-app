@@ -10,7 +10,7 @@ const PublicLayout = () => {
   return (
     <div className={styles.page}>
       <h1>Job Manager</h1>
-      <div className={styles.container}>
+      <div className={`${styles.container} card`}>
         <Outlet />
       </div>
     </div>

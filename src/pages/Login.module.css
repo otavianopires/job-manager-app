@@ -4,9 +4,9 @@
 }
 
 .alert {
-  background-color: rgb(238, 177, 7);
+  background-color: var(--green);
   color: #ffffff;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 3px;
 }
 
@@ -31,13 +31,12 @@
 .input {
   padding: 10px 12px;
   font-size: 16px;
-  background-color: #f6f6f6;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--light-gray);
   border-radius: 3px;
 }
 
 .button {
   width: 100%;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }

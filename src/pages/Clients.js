@@ -24,30 +24,32 @@ const Clients = () => {
   return (
     <div>
       <h2>Clients</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        {loading &&
-        <tbody>
-          <tr>
-            <td colSpan="4">Loading...</td>
-          </tr>
-        </tbody>
-        }
-        {!loading &&<tbody>
-          {clients.map(client => (
-            <tr key={client.id}>
-              <td>{client.attributes.name}</td>
-              <td>{client.attributes.address}</td>
+      <div className="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
             </tr>
-          ))}
-        </tbody>
-        }
-      </table>
+          </thead>
+          {loading &&
+          <tbody>
+            <tr>
+              <td colSpan="4">Loading...</td>
+            </tr>
+          </tbody>
+          }
+          {!loading &&<tbody>
+            {clients.map(client => (
+              <tr key={client.id}>
+                <td>{client.attributes.name}</td>
+                <td>{client.attributes.address}</td>
+              </tr>
+            ))}
+          </tbody>
+          }
+        </table>
+      </div>
     </div>
   )
 }

@@ -32,8 +32,8 @@ const JobDetails = () => {
       }
       let totalTimeInMiliseconds = getTotalTimeInMiliseconds(response.data.attributes.startTime, response.data.attributes.endTime);
       setTimeAvailable(totalTimeInMiliseconds);
-      const jobTimes = response.data.attributes.job_times.data;
-      const result = jobTimes.filter(checkComplete);
+      const jobTimesList = response.data.attributes.job_times.data;
+      const result = jobTimesList.filter(checkComplete);
       if (result.length > 0) {
         setJobTime(result[0]);
         setOverdue(false);
@@ -86,19 +86,25 @@ const JobDetails = () => {
     return () => {};
   }, [activeJob, id]);
 
+  useEffect(() => {
+    setLoading(true);
+    getJob();
+    return () => {};
+  }, []);
+
   if (loading) {
     return <p>Loading...</p>
   }
 
 
   return (
-    <div className={styles.jobContainer}>
+    <div className="card">
       {job !== null && job.hasOwnProperty('id') && <>
         <h1>Job: {job.attributes.title}</h1>
         {overdue && <div className={styles.overdue}>This is overdue</div>}
 
         {jobTime && jobTime.hasOwnProperty('id') && jobTime.attributes.active === false && jobTime.attributes.endTime !== null &&
-        <div className={styles.complete}><span className={styles.checkContainer}><span className={styles.check}></span></span> Completed</div>
+        <div className={styles.complete}><span className={`material-symbols-outlined ${styles.iconComplete}`}>check_circle</span> Completed</div>
         }
 
         { showStopWatch() }

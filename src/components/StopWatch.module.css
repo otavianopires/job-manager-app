@@ -1,20 +1,31 @@
 .stopWatch {
-  text-align: center;
   display: flex;
-  flex-direction: column;
-  gap: 7px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
 .controllers {
   display: flex;
-  gap: 7px;
+  gap: 1px;
 }
 
 .button {
-  background-color: white !important;
-  color: #266df1 !important;
+  color: var(--green);
+  background-color: var(--white);
 }
 
 .button:hover {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: var(--green);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }

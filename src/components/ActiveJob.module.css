@@ -3,27 +3,21 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: #266df1;
+  background: var(--green);
   color: #ffffff;
   padding: 10px 15px;
-  text-align: center;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr 1fr;
+  text-align: left;
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: space-between;
 }
 
 .button {
-  text-decoration: none;
-  border-radius: 9999px;
-  border: none;
-  background-color: white;
-  color: #266df1;
-  padding: 10px 22px;
-  cursor: pointer;
+  background-color: var(--white);
+  color: var(--green);
 }
 
 .button:hover {
+  color: var(--green);
   background-color: rgba(255, 255, 255, 0.8);
 }

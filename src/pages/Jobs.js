@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
+import Button from '../components/Button';
 import {fetchData, formatDate, generateQueryString} from '../lib/helpers';
 import styles from "./Jobs.module.css";
 
@@ -43,7 +44,7 @@ const Jobs = () => {
                 <li>Start: {formatDate(job.attributes.startTime, { weekday: "short", year: "numeric", month: "short", day: "numeric", timeZone: "EST" })}</li>
                 <li>End: {formatDate(job.attributes.endTime, { weekday: "short", year: "numeric", month: "short", day: "numeric", timeZone: "EST" })}</li>
               </ul>
-              <Link to={`/jobs/${job.id}`} className={styles.button}>View details</Link>
+              <Button to={`/jobs/${job.id}`} className={styles.button} rightIcon="chevron_right">View details</Button>
             </div>
           ))}
         </div>
