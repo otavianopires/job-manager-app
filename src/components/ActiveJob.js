@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useJob } from "../contexts/JobContext";
 import styles from "./ActiveJob.module.css";

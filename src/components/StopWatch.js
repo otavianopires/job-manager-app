@@ -7,35 +7,32 @@ import Button from "./Button";
 const StopWatch = (props) => {
   const { id } = useParams();
   const {
-    activeJob,
     isActive,
     isPaused,
-    setIsPaused,
     time,
-    setActiveJobStartTime,
-    setActiveJobEndTime,
-    setReferenceTime,
+    startJob,
+    completeJob,
+    pauseJob,
+    resumeJob
   } = useJob();
 
   const handleStart = async (e) => {
     e.preventDefault();
-    setActiveJobStartTime(id);
+    startJob(id);
   };
 
   const handlePause = async (e) => {
     e.preventDefault();
-    setIsPaused(true);
+    pauseJob();
   };
 
   const handleResume = async (e) => {
     e.preventDefault();
-    const pauseTime = Date.now() - parseInt(activeJob.attributes.totalJobTime);
-    setReferenceTime(pauseTime);
-    setIsPaused(false);
+    resumeJob();
   };
 
-  const handleStop = () => {
-    setActiveJobEndTime();
+  const handleComplete = () => {
+    completeJob();
   };
 
   return (
@@ -45,7 +42,7 @@ const StopWatch = (props) => {
         {!isActive && <Button onClick={handleStart} className={styles.button}>Start</Button>}
         {isActive && !isPaused && <Button onClick={handlePause} className={styles.button}>Pause</Button>}
         {isActive && isPaused  && <Button onClick={handleResume} className={styles.button}>Resume</Button>}
-        {isActive && <Button onClick={handleStop} className={styles.button}>Complete</Button>}
+        {isActive && <Button onClick={handleComplete} className={styles.button}>Complete</Button>}
       </div>
     </div>
   );
